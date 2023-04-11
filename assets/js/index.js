@@ -11,14 +11,19 @@ function injectedSectionElement(element) {
 /**Fonction permettant d'injecter des éléments dans l'article directement
  * 
  * @param element 
+ * @param article
  */
 function injectedArticleElement(article, element) {
     return document.querySelector(article)
         .appendChild(document.createElement(element));
 }
 
+/**Fonction permettant d'injecter la section avec ses enfants en utilisant l'objet datas
+ * 
+ */
 function domHandlerSection() {
 
+    // document.querySelector("section:nth-child(2)").classList.add
     /*Initialisation d'un tableau de l'objet section dans datas*/
     const data = Object.entries(datas.section);
 
@@ -39,16 +44,45 @@ function domHandlerSection() {
         injectedArticleElement(`.${data[i + 1].at(0)}`, "p").textContent = `${data[i + 1].at(1).para[1].p2} `;
         injectedArticleElement(`.${data[i + 1].at(0)}`, "p").textContent = `${data[i + 1].at(1).para[2].p3} `;
 
-        injectedArticleElement(`.${data[i + 1].at(0)}`, "a").textContent = `${data[+1].at(1).a} `;
+        injectedArticleElement(`.${data[i + 1].at(0)}`, "a").textContent = `${data[i + 1].at(1).a} `;
 
     }
 
 }
+
+/**Fonction utilitaire de cache-cache pour les éléments
+ * @param element 
+ */
+
+function switchDisplayHide(element, valueDisplayInitial, valueDisplay) {
+    if (document.querySelector(element).style.display === valueDisplayInitial) {
+        document.querySelector(element).style.display = valueDisplay;
+    }
+    else {
+        document.querySelector(element).style.display = valueDisplayInitial;
+    }
+}
+
+// Fonction de cache-cache des éléments
+
+function onClickDisplayHide(e) {
+    e.preventDefault();
+    if (e.target.id === "btn-section") {
+        switchDisplayHide("section:nth-child(2)", "", "initial");
+    }
+    else {
+        switchDisplayHide("aside", "none", "inline-block");
+
+    }
+}
+
 //On attends que le DOM se charge pour injectier les éléments dans la section
 
 document.addEventListener("DOMContentLoaded", function () {
 
     domHandlerSection();
-    
 
-})
+    document.querySelectorAll("#btn-section, #btn-aside").
+        forEach(button => button.addEventListener("click", onClickDisplayHide));
+
+});

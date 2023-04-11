@@ -87,6 +87,7 @@ main section:nth-child(2){
     background-color: var(--primary-color);
 }
 /*  */
+
 main section:nth-child(2) h2, main section:nth-child(2) h3 {
     text-align: center;
     width: 100%;
