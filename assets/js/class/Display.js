@@ -1,4 +1,4 @@
-class Display {
+class DisplayHide {
     constructor(element, valueInit, newValue, idButton) {
         this.element = element;
         this.valueInit = valueInit;
@@ -18,6 +18,4 @@ class Display {
 
 };
 
-// sectiondisplay = new Display("section", "","flex") ; //this.element=section, "",flex
-// sectionDisplay.onClickDisplayHide(e);// 
-export default Display;
+export default DisplayHide;

@@ -1,10 +1,9 @@
-import { datas } from "../js/data/index.js";
-import Display from "./class/Display.js";
+import DisplayHide from "./class/Display.js";
 import DomElement from "./class/domElement.js";
 
 
-const sectionToDisplay = new Display("section:nth-child(2)","","flex","btn-section");
-const asideToDisplay = new Display("aside","inline-block","none","btn-aside");
+const sectionToDisplay = new DisplayHide("section:nth-child(2)","","flex","btn-section");
+const asideToDisplay = new DisplayHide("aside","inline-block","none","btn-aside");
 
 /** Fonction permettant d'injecter un élement dans le DOM
  * @param element 
